@@ -6,42 +6,42 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center h-16">
           <div className="flex space-x-8">
-            <Link 
+            <a 
               href="#about"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               About
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="#experience"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Experience
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="#projects"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Projects
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="#skills"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Skills
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="#hobbies"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Hobbies
-            </Link>
-            <Link 
+            </a>
+            <a 
               href="#contact"
               className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
             >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
       </div>
