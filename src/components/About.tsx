@@ -8,8 +8,8 @@ const About = () => {
           About Me
         </h2>
         <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 relative">
+          <div>
+            <div className="w-48 h-48 md:w-64 md:h-64 flex-shrink-0 relative float-left mr-8 mb-4">
               <Image
                 src="/facePhoto.png"
                 alt="Ryan"
