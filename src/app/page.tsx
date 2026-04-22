@@ -46,7 +46,7 @@ function Section({
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 md:px-20 lg:px-40">
+    <main className="min-h-screen flex justify-center px-6">
       <div className="max-w-md w-full space-y-10 py-20">
         <header className="space-y-3">
           <h1 className="text-3xl font-bold">Ryan Jackman</h1>
