@@ -5,11 +5,6 @@ const previously = [
   { text: "1st Place Boilermake XII Roboflow Track, Feb. 2025", desc: "View our Devpost submission", link: "https://devpost.com/software/eyedentify-3leky5" },
 ];
 
-const currently = [
-  { text: "Working on x project" },
-  { text: "Studying CSE at OSU" },
-];
-
 const upcoming = [
   { text: "SWE Intern at Wells Fargo, Summer 2026", bold: true },
   { text: "Leading HackOHI/O 2026" },
@@ -94,7 +89,6 @@ export default function Home() {
           </div>
         </header>
 
-        <Section title="Currently" items={currently} />
         <Section title="Upcoming" items={upcoming} />
         <Section title="Previously" items={previously} />
       </div>
