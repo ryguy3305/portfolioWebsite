@@ -57,7 +57,7 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap items-center gap-4 text-sm">
             <a
-              href="mailto:your@email.com"
+              href="mailto:ryguy3305@gmail.com"
               className="text-neutral-500 hover:text-neutral-900 transition-colors"
             >
               Email
