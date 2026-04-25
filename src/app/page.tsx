@@ -95,7 +95,7 @@ export default function Home() {
               </svg>
             </a>
             <a
-              href="/resume.pdf"
+              href="/ryanjackman.pdf"
               aria-label="Resume"
               target="_blank"
               rel="noopener noreferrer"
