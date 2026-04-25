@@ -1,3 +1,5 @@
+import EmojiWorld from "@/components/EmojiWorld";
+
 const previously = [
   { text: "SWE Intern at Vertiv, Columbus, Summer 2025", bold: true },
   { text: "Led MakeOHI/O 2026", desc: "Ohio State's largest hardware-focused hackathon, 250+ attendees", link: "https://hack.osu.edu/make/2026" },
@@ -48,7 +50,8 @@ export default function Home() {
   return (
     <main className="min-h-screen flex justify-center px-6">
       <div className="max-w-3xl w-full space-y-10 py-16">
-        <header className="space-y-3">
+        <header className="relative space-y-3">
+          <EmojiWorld />
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Ryan Jackman</h1>
           <div className="text-neutral-600 space-y-0.5">
             <p>CSE @ Ohio State &middot; Class of 2027</p>
