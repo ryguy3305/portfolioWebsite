@@ -16,6 +16,17 @@ const QUIPS = [
   "tasty",
   "Why am I here",
   "blackpink in your area",
+  "mmmmm salad",
+  "I <3 Twice", 
+  "Chicken?",
+  "I am a giraffe",
+  "just a giraffe",
+  "giraffes are cool",
+  "I am not a horse",
+  "do you like my spots?",
+  "I am an emoji.",
+  "XD",
+  ":3",  
 ];
 
 const MIN_X = -210;
