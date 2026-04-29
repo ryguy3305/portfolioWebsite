@@ -27,6 +27,10 @@ const QUIPS = [
   "I am an emoji.",
   "XD",
   ":3",  
+  "I want to play slay the spire",
+  "My kaisa is awesome",
+  "ryguy3305",
+
 ];
 
 const MIN_X = -210;
@@ -348,7 +352,10 @@ export default function EmojiWorld() {
       className="hidden md:block absolute top-0 right-0 pointer-events-none w-[370px] h-[150px]"
       style={{ opacity: loaded ? 1 : 0, transition: "opacity 500ms ease-out" }}
     >
-      <div className="absolute inset-0 rounded-lg overflow-hidden">
+      <div
+        className="absolute inset-0 rounded-lg overflow-hidden"
+        style={{ fontFamily: "var(--font-noto-color-emoji), sans-serif" }}
+      >
         <style>{`
           @keyframes ew-bob {
             0%, 100% { transform: rotate(-2deg) translateY(0); }
@@ -583,7 +590,7 @@ export default function EmojiWorld() {
         className="absolute left-0 right-0 text-center text-[10px] tracking-wide text-neutral-500"
         style={{ top: 156 }}
       >
-        Columbus OH - {time ?? "—"} - {describeScene(scene)}
+        Columbus, OH - {time ?? "—"} - {describeScene(scene)}
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ const previously = [
 const upcoming = [
   { text: "SWE Intern at Wells Fargo, Summer 2026", bold: true },
   { text: "Leading HackOHI/O 2026" },
-  { text: "Graduating Spring 2027" },
 ];
 
 function Section({

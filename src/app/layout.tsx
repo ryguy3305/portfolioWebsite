@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Color_Emoji } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const notoColorEmoji = Noto_Color_Emoji({
+  subsets: ["emoji"],
+  weight: "400",
+  variable: "--font-noto-color-emoji",
+});
 
 export const metadata: Metadata = {
   title: "Ryan Jackman | Portfolio",
@@ -16,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-stone-50 text-neutral-900`}>
+      <body className={`${inter.className} ${notoColorEmoji.variable} bg-stone-50 text-neutral-900`}>
         {children}
       </body>
     </html>
