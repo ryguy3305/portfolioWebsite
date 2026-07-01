@@ -1,13 +1,13 @@
 import EmojiWorld from "@/components/EmojiWorld";
 
 const previously = [
-  { text: "SWE Intern at Vertiv, Columbus, Summer 2025", bold: true },
+  { text: "Computer Engineering Intern at Vertiv, Columbus, Summer 2025", bold: true },
   { text: "Led MakeOHI/O 2026", desc: "Ohio State's largest hardware-focused hackathon, 250+ attendees", link: "https://hack.osu.edu/make/2026" },
   { text: "1st Place Nationwide SIAM2I Quantathon, March 2025", desc: "Check out our presentation", link: "https://www.youtube.com/watch?v=4dQUfS9YN8w" },
   { text: "1st Place Boilermake XII Roboflow Track, Feb. 2025", desc: "View our Devpost submission", link: "https://devpost.com/software/eyedentify-3leky5" },
 ];
 
-const upcoming = [
+const current = [
   { text: "SWE Intern at Wells Fargo, Summer 2026", bold: true },
   { text: "Leading HackOHI/O 2026" },
 ];
@@ -114,7 +114,7 @@ export default function Home() {
         <hr className="border-neutral-200" />
 
         <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
-          <Section title="Upcoming" items={upcoming} />
+          <Section title="Currently" items={current} />
           <Section title="Previously" items={previously} />
         </div>
       </div>

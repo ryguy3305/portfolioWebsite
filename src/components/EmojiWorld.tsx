@@ -42,9 +42,9 @@ const QUIP_MIN_GAP_MS = 6000;
 const QUIP_MAX_GAP_MS = 14000;
 const QUIP_VISIBLE_MS = 2800;
 
-const COLUMBUS_LAT = 39.96;
-const COLUMBUS_LON = -82.99;
-const WEATHER_URL = `https://api.open-meteo.com/v1/forecast?latitude=${COLUMBUS_LAT}&longitude=${COLUMBUS_LON}&current=weather_code,is_day&timezone=America%2FNew_York`;
+// Charlotte Douglas Airport (KCLT) — NWS reports real observations, unlike
+// Open-Meteo's model forecast which can show weather that isn't happening.
+const WEATHER_URL = "https://api.weather.gov/stations/KCLT/observations/latest";
 const WEATHER_REFRESH_MS = 10 * 60 * 1000;
 
 const MOONS = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
@@ -75,7 +75,7 @@ function describeScene(scene: Scene): string {
   return CONDITION_LABEL[scene.kind];
 }
 
-function formatColumbusTime(): string {
+function formatCharlotteTime(): string {
   return new Date().toLocaleTimeString("en-US", {
     timeZone: "America/New_York",
     hour: "numeric",
@@ -83,15 +83,22 @@ function formatColumbusTime(): string {
   });
 }
 
-function codeToCondition(code: number): Condition {
-  if (code === 0 || code === 1) return "clear";
-  if (code === 2) return "partly";
-  if (code === 3) return "cloudy";
-  if (code === 45 || code === 48) return "fog";
-  if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
-  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "snow";
-  if (code === 95 || code === 96 || code === 99) return "storm";
-  return "clear";
+function tokenToCondition(token: string): Condition {
+  if (token === "sct" || token === "wind_sct") return "partly";
+  if (token === "bkn" || token === "ovc" || token === "wind_bkn" || token === "wind_ovc") return "cloudy";
+  if (token.startsWith("tsra") || token === "tornado" || token === "hurricane" || token === "tropical_storm") return "storm";
+  if (token.startsWith("snow") || token === "blizzard" || token.includes("sleet") || token.includes("fzra")) return "snow";
+  if (token.startsWith("rain")) return "rain";
+  if (token === "fog" || token === "haze" || token === "smoke" || token === "dust") return "fog";
+  return "clear"; // skc, few, wind_skc, wind_few, and any unknown token
+}
+
+// NWS icon URLs look like ".../icons/land/night/tsra_sct,40?size=medium".
+// The path encodes day/night and a condition token; parse both.
+function iconToScene(icon: string): { kind: Condition; isNight: boolean } {
+  const isNight = icon.includes("/night/");
+  const match = icon.match(/\/(?:day|night)\/([a-z_]+)/);
+  return { kind: tokenToCondition(match ? match[1] : "skc"), isNight };
 }
 
 type ScenePreset = {
@@ -218,7 +225,7 @@ export default function EmojiWorld() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const tick = () => setTime(formatColumbusTime());
+    const tick = () => setTime(formatCharlotteTime());
     tick();
     const intervalId = window.setInterval(tick, 60_000);
     return () => clearInterval(intervalId);
@@ -310,16 +317,12 @@ export default function EmojiWorld() {
       try {
         const res = await fetch(WEATHER_URL);
         if (res.ok) {
-          const data: { current?: { weather_code?: number; is_day?: number } } =
+          const data: { properties?: { icon?: string | null } } =
             await res.json();
-          const code = data.current?.weather_code;
-          const is_day = data.current?.is_day;
-          if (!cancelled && typeof code === "number" && typeof is_day === "number") {
-            setScene({
-              kind: codeToCondition(code),
-              isNight: is_day === 0,
-              moonIdx: moonPhaseIndex(),
-            });
+          const icon = data.properties?.icon;
+          if (!cancelled && typeof icon === "string" && icon) {
+            const { kind, isNight } = iconToScene(icon);
+            setScene({ kind, isNight, moonIdx: moonPhaseIndex() });
           }
         }
       } catch {
@@ -590,7 +593,7 @@ export default function EmojiWorld() {
         className="absolute left-0 right-0 text-center text-[10px] tracking-wide text-neutral-500"
         style={{ top: 156 }}
       >
-        Columbus, OH - {time ?? "—"} - {describeScene(scene)}
+        Charlotte, NC - {time ?? "—"} - {describeScene(scene)}
       </div>
     </div>
   );
