@@ -1,6 +1,7 @@
 import EmojiWorld from "@/components/EmojiWorld";
 
 const previously = [
+  { text: "SWE Intern at Wells Fargo, Summer 2026", bold: true },
   { text: "Computer Engineering Intern at Vertiv, Columbus, Summer 2025", bold: true },
   { text: "Led MakeOHI/O 2026", desc: "Ohio State's largest hardware-focused hackathon, 250+ attendees", link: "https://hack.osu.edu/make/2026" },
   { text: "1st Place Nationwide SIAM2I Quantathon, March 2025", desc: "Check out our presentation", link: "https://www.youtube.com/watch?v=4dQUfS9YN8w" },
@@ -8,7 +9,7 @@ const previously = [
 ];
 
 const current = [
-  { text: "SWE Intern at Wells Fargo, Summer 2026", bold: true },
+  { text: "TA for Software Startups" },
   { text: "Leading HackOHI/O 2026" },
 ];
 

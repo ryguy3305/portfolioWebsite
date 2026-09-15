@@ -42,9 +42,9 @@ const QUIP_MIN_GAP_MS = 6000;
 const QUIP_MAX_GAP_MS = 14000;
 const QUIP_VISIBLE_MS = 2800;
 
-// Charlotte Douglas Airport (KCLT) — NWS reports real observations, unlike
+// John Glenn Columbus International Airport (KCMH) — NWS reports real observations, unlike
 // Open-Meteo's model forecast which can show weather that isn't happening.
-const WEATHER_URL = "https://api.weather.gov/stations/KCLT/observations/latest";
+const WEATHER_URL = "https://api.weather.gov/stations/KCMH/observations/latest";
 const WEATHER_REFRESH_MS = 10 * 60 * 1000;
 
 const MOONS = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"];
@@ -75,7 +75,7 @@ function describeScene(scene: Scene): string {
   return CONDITION_LABEL[scene.kind];
 }
 
-function formatCharlotteTime(): string {
+function formatColumbusTime(): string {
   return new Date().toLocaleTimeString("en-US", {
     timeZone: "America/New_York",
     hour: "numeric",
@@ -225,7 +225,7 @@ export default function EmojiWorld() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const tick = () => setTime(formatCharlotteTime());
+    const tick = () => setTime(formatColumbusTime());
     tick();
     const intervalId = window.setInterval(tick, 60_000);
     return () => clearInterval(intervalId);
@@ -593,7 +593,7 @@ export default function EmojiWorld() {
         className="absolute left-0 right-0 text-center text-[10px] tracking-wide text-neutral-500"
         style={{ top: 156 }}
       >
-        Charlotte, NC - {time ?? "—"} - {describeScene(scene)}
+        Columbus, OH - {time ?? "—"} - {describeScene(scene)}
       </div>
     </div>
   );
