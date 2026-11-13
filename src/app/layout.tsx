@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Color_Emoji } from "next/font/google";
 import "./globals.css";
+import SiteNav from "@/components/SiteNav";
 
 const inter = Inter({ subsets: ["latin"] });
 const notoColorEmoji = Noto_Color_Emoji({
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${notoColorEmoji.variable} bg-stone-50 text-neutral-900`}>
+        <SiteNav />
         {children}
       </body>
     </html>
